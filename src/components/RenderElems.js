@@ -1,28 +1,28 @@
-import React from 'react'
-
 const RenderElems = ({ widget }) => {
-    switch (widget.element) {
+    let renderedElem = null
+
+    switch (widget?.element) {
         case 'Paragraph':
-            return <p className="content-text">{widget.text}</p>
+            renderedElem = <p className="content-text">{widget.text}</p>
+            break
         case 'Headline':
-            return <h2 className="content-header">{widget.text}</h2>
-
+            renderedElem = <h2 className="content-header">{widget.text}</h2>
+            break
         case 'Button':
-            return widget.text ? (
+            renderedElem = widget.text ? (
                 <button className="button-content">{widget.text}</button>
-            ) : (
-                ''
-            )
-
+            ) : null
+            break
         case 'Image':
-            return widget.imgPicture ? (
+            renderedElem = widget.imgPicture ? (
                 <img src={widget.imgPicture} className="image" />
-            ) : (
-                ''
-            )
+            ) : null
+            break
         default:
             break
     }
+
+    return renderedElem
 }
 
 export default RenderElems
