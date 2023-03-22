@@ -1,5 +1,4 @@
 const Headline = () => {
-    // return <PicCenterOutlined style={{ fontSize: '25px', color: '#97AACD' }} />
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

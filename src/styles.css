@@ -187,3 +187,7 @@
     height: 230px;
     border-radius: 4px;
 }
+
+.click-on-me {
+    cursor: pointer;
+}

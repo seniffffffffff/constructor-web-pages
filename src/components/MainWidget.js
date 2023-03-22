@@ -20,8 +20,6 @@ const MainWidget = ({ widget }) => {
     const elementsArray = useSelector((state) => state.elements)
     const dispatch = useDispatch()
     useEffect(() => setInputValue(widget.text), [widget])
-    // console.log('elementsArray', elementsArray)
-    // console.log('widget', widget)
     const addContentInElement = (text) => {
         setInputValue(text)
         dispatch({
@@ -47,7 +45,10 @@ const MainWidget = ({ widget }) => {
     }
 
     const switchPlaces = (arr, index1, index2) => {
-        // if (index1 === 0 && index2 === -1) return null
+        if (arr.length === index2 || index1 === -1) {
+            return null
+        }
+
         const swappedArray = ([arr[index1], arr[index2]] = [
             arr[index2],
             arr[index1],
@@ -91,7 +92,7 @@ const MainWidget = ({ widget }) => {
                     >
                         <div className="left-icons centered">
                             <div
-                                className="centered"
+                                className="centered click-on-me"
                                 onClick={
                                     elementsArray.length === 1
                                         ? null
@@ -108,7 +109,7 @@ const MainWidget = ({ widget }) => {
                                 <ArrowUp />
                             </div>
                             <div
-                                className="margin-left rotated centered"
+                                className="margin-left rotated centered click-on-me"
                                 onClick={
                                     elementsArray.length === 1
                                         ? null
@@ -127,13 +128,13 @@ const MainWidget = ({ widget }) => {
                         </div>
                         <div className="right-icons centered">
                             <div
-                                className="centered"
+                                className="centered click-on-me"
                                 onClick={() => copyElem(widget.id)}
                             >
                                 <CopyIcon />
                             </div>
                             <div
-                                className="margin-left centered"
+                                className="margin-left centered click-on-me"
                                 onClick={() => deleteElem(widget.id)}
                             >
                                 <TrashIcon />
